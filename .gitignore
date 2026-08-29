@@ -1,0 +1,35 @@
+# Build output
+x64/
+build/
+bin/
+obj/
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.user
+
+# VS Code
+.vscode/
+
+# CLion
+.idea/
+
+# macOS
+.DS_Store
+
+#external
+external/

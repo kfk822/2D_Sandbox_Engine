@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="2D-sandbox-engine.vcxproj" Id="579a9f35-4616-4027-bd42-13a3e41f2ec7" />
+</Solution>
