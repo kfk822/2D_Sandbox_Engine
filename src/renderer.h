@@ -5,14 +5,14 @@
 
 #include "block.h"
 
-class BlockRenderer {
+class Renderer {
 private:
 	unsigned int m_VBO, m_VAO, m_EBO;
-	std::vector<float> m_vertices;
-	std::vector<int> m_indices;
-	int m_size;
+	std::vector<float> m_Vertices;
+	std::vector<int> m_Indices;
+	int m_Size;
 public: 
-	BlockRenderer();
+	Renderer();
 
 	void addBlock(Block& block);
 

@@ -6,6 +6,7 @@
 #include "window.h"
 #include "block.h"
 #include "input.h"
+#include "texture.h"
 
 #include <vector>
 
@@ -13,22 +14,27 @@
 void processInput(Input& input, Window& window);
 
 int main() {
-
-	std::vector<Block> blocks;
-
-	for (int i = 0; i < 5; i++) {
-		blocks.push_back({ i, i, Block::Texture::Dirt });
-	}
 	
 	Window window;
-	BlockRenderer renderer;
+	Renderer renderer;
 	Shader shader("C:/dev/2D-sandbox-engine/src/vertexShader.vs", "C:/dev/2D-sandbox-engine/src/fragmentShader.fs");
-	Input input(window.m_window);
+	Input input(window.m_Window);
 
+	Texture texture("C:/dev/2D-sandbox-engine/assets/Spritesheet.png");
+
+	std::vector<Block> blocks;
+	BlockTexture blockTexture = BlockTexture::Dirt;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			blocks.push_back({ i, j, blockTexture , texture});
+			blockTexture = (BlockTexture)((int)(blockTexture) + 1);
+		}
+	}
 	for (Block b : blocks) {
 		renderer.addBlock(b);
 	}
-
+	texture.bindTexture();
+	shader.setInt("ourTexture", 0);
 	renderer.push();
 
 	while (!window.windowShouldClose()) {

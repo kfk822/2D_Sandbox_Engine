@@ -15,17 +15,17 @@ enum class Key {
 
 class Input {
 private:
-	GLFWwindow* m_window;
+	GLFWwindow* m_Window;
 public:
-	Input(GLFWwindow* window) : m_window(window){}
+	Input(GLFWwindow* window) : m_Window(window){}
 
 	void update();
 
 	bool isKeyPressed(Key key) {
-		return glfwGetKey(m_window, (int)key) == GLFW_PRESS;
+		return glfwGetKey(m_Window, (int)key) == GLFW_PRESS;
 	}
 	bool isKeyReleased(Key key) {
-		return glfwGetKey(m_window, (int)key) == GLFW_RELEASE;
+		return glfwGetKey(m_Window, (int)key) == GLFW_RELEASE;
 	}
 
 };

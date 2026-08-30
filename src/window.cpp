@@ -7,10 +7,10 @@ Window::Window() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	m_window = glfwCreateWindow(800, 600, "2D-sandbox-engine", NULL, NULL);
+	m_Window = glfwCreateWindow(800, 600, "2D-sandbox-engine", NULL, NULL);
 
-	glfwMakeContextCurrent(m_window);
-	glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
+	glfwMakeContextCurrent(m_Window);
+	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -24,13 +24,13 @@ Window::~Window() {
 }
 
 bool Window::windowShouldClose() {
-	return glfwWindowShouldClose(m_window);
+	return glfwWindowShouldClose(m_Window);
 }
 
 void Window::update() {
-	glfwSwapBuffers(m_window);
+	glfwSwapBuffers(m_Window);
 	glfwPollEvents();
 }
 void Window::setShouldClose(bool close) {
-	glfwSetWindowShouldClose(m_window, close);
+	glfwSetWindowShouldClose(m_Window, close);
 }
