@@ -3,7 +3,7 @@
 #include <vector>
 #include <glad/glad.h>
 
-#include "block.h"
+#include "../header/block.h"
 
 class Renderer {
 private:

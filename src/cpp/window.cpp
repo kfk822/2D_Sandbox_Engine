@@ -1,13 +1,13 @@
-#include "window.h"
+#include "../header/window.h"
 
-Window::Window() {
+Window::Window(const char* name, float width, float height) : m_Width(width), m_Height(height) {
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	m_Window = glfwCreateWindow(800, 600, "2D-sandbox-engine", NULL, NULL);
+	m_Window = glfwCreateWindow(width, height, name, NULL, NULL);
 
 	glfwMakeContextCurrent(m_Window);
 	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);

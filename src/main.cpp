@@ -1,27 +1,16 @@
-#include <glad/glad.h>
-#include <glfw/glfw3.h>
+#include "includes.h"
 
-#include "shader.h"
-#include "renderer.h"
-#include "window.h"
-#include "block.h"
-#include "input.h"
-#include "texture.h"
-
-#include <vector>
-
-
-void processInput(Input& input, Window& window);
+void processInput(Input& input, Window& window, Camera& camera, float deltaTime);
 
 int main() {
 	
-	Window window;
+	Window window("2D_Sandbox_Engine",800,600);
 	Renderer renderer;
-	Shader shader("C:/dev/2D-sandbox-engine/src/vertexShader.vs", "C:/dev/2D-sandbox-engine/src/fragmentShader.fs");
+	Shader shader("src/shaders/vertexShader.vs", "src/shaders/fragmentShader.fs");
 	Input input(window.m_Window);
+	Camera camera(window.m_Width, window.m_Height);
 
-	Texture texture("C:/dev/2D-sandbox-engine/assets/Spritesheet.png");
-
+	Texture texture("assets/Spritesheet.png");
 	std::vector<Block> blocks;
 	BlockTexture blockTexture = BlockTexture::Dirt;
 	for (int i = 0; i < 4; i++) {
@@ -34,17 +23,22 @@ int main() {
 		renderer.addBlock(b);
 	}
 	texture.bindTexture();
+	shader.use();
 	shader.setInt("ourTexture", 0);
+	shader.setMat4("projection", camera.getProjection());
 	renderer.push();
 
+	Time time;
+	
 	while (!window.windowShouldClose()) {
-
-		processInput(input ,window);
+		time.calculateDeltaTime();
+		processInput(input ,window, camera,time.getDeltaTime());
 
 		shader.use();
 
 		renderer.draw();
 
+		shader.setMat4("view", camera.getView());
 		window.update();
 	}
 
@@ -52,7 +46,16 @@ int main() {
 	return 0;
 }
 
-void processInput(Input& input, Window& window) {
+void processInput(Input& input, Window& window, Camera& camera, float deltaTime) {
 	if (input.isKeyPressed(Key::ESC))
 		window.setShouldClose(true);
+	if (input.isKeyPressed(Key::A))
+		camera.move(Direction::Left, deltaTime);
+	if (input.isKeyPressed(Key::D))
+		camera.move(Direction::Rigth, deltaTime);
+	if (input.isKeyPressed(Key::W))
+		camera.move(Direction::Up, deltaTime);
+	if (input.isKeyPressed(Key::S))
+		camera.move(Direction::Down, deltaTime);
+
 }

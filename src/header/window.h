@@ -6,9 +6,10 @@
 class Window
 {
 public:
+	float m_Width, m_Height;
 	GLFWwindow* m_Window;
 
-	Window();
+	Window(const char* name,float width,float height);
 	~Window();
 
 	bool windowShouldClose();

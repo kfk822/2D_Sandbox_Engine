@@ -1,4 +1,4 @@
-#include "renderer.h"
+#include "../header/renderer.h"
 
 Renderer::Renderer() {
 	glGenVertexArrays(1, &m_VAO);
