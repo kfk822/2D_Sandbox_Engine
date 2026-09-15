@@ -3,24 +3,32 @@
 void processInput(Input& input, Window& window, Camera& camera, float deltaTime);
 
 int main() {
-	
-	Window window("2D_Sandbox_Engine",800,600);
+
+	Window window("2D_Sandbox_Engine", 800, 600);
 	Renderer renderer;
 	Shader shader("src/shaders/vertexShader.vs", "src/shaders/fragmentShader.fs");
 	Input input(window.m_Window);
 	Camera camera(window.m_Width, window.m_Height);
 
-	Texture texture("assets/Spritesheet.png");
+	Texture texture("assets/Spritesheet2.png");
+	WorldHandler worldHandler(1000, 1000, 16);
 	std::vector<Block> blocks;
-	BlockTexture blockTexture = BlockTexture::Dirt;
+	BlockTexture blockTexture = BlockTexture::Air;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			blocks.push_back({ i, j, blockTexture , texture});
 			blockTexture = (BlockTexture)((int)(blockTexture) + 1);
+			worldHandler.addBlock(blocks.back(), blockTexture);
 		}
 	}
-	for (Block b : blocks) {
-		renderer.addBlock(b);
+	worldHandler.generateWorld(0);
+	for (int i = 0; i < 1000;i++) {
+		for (int j = 0; j < 1000; j++) {
+			if (worldHandler.getBlock(i, j) != BlockTexture::Air) {
+				Block b(i, j, worldHandler.getBlock(i, j), texture);
+				renderer.addBlock(b);
+			}
+		}
 	}
 	texture.bindTexture();
 	shader.use();

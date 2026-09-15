@@ -24,8 +24,8 @@ private:
 
 public:
 	Camera(float screenWidth, float screenHeight)  {
-		m_X = 0;
-		m_Y = 0;
+		m_X = 500;
+		m_Y = 40;
 		fov = glm::radians(45.0f);
 		aspect = screenWidth / screenHeight;
 		zNear = 0.1f;

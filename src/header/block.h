@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "../header/texture.h"
+#include "blockTexture.h"
 
 class Block {
 public:
@@ -11,6 +12,7 @@ public:
 	int m_X, m_Y;
 	float m_Texturex, m_Texturey;
 	float m_TextureHeight, m_TextureWidth;
+	Block() {}
 	Block(int x, int y, BlockTexture blockTexture,Texture& texture)
 	{
 		m_X = x;

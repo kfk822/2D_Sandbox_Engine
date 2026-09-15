@@ -2,11 +2,8 @@
 
 #include <glad/glad.h>
 #include <vector>
+#include "blockTexture.h"
 
-enum class BlockTexture
-{
-	Dirt = 0, Grass, Sand, Snow, Mud, JungleGrass, Clay, Ice, Wood, Stone, Copper, Iron, WoodBlock, Leaves, Silver, Gold
-};
 
 class Texture {
 private:

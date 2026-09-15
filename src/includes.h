@@ -8,6 +8,7 @@
 #include "header/texture.h"
 #include "header/camera.h"
 #include "header/time.h"
+#include "header/worldHandler.h"
 
 
 #include <vector>
