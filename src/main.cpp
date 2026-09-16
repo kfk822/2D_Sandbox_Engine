@@ -12,21 +12,21 @@ int main() {
 
 	Texture texture("assets/Spritesheet2.png");
 	WorldHandler worldHandler(1000, 1000, 16);
-	std::vector<Block> blocks;
 	BlockTexture blockTexture = BlockTexture::Air;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			blocks.push_back({ i, j, blockTexture , texture});
-			blockTexture = (BlockTexture)((int)(blockTexture) + 1);
-			worldHandler.addBlock(blocks.back(), blockTexture);
+			Block block(blockTexture , texture);
+			worldHandler.addBlock(block, blockTexture);
+			blockTexture = (BlockTexture)((int)(blockTexture)+1);
+
 		}
 	}
-	worldHandler.generateWorld(0);
+	worldHandler.generateWorld(457275272727);
 	for (int i = 0; i < 1000;i++) {
 		for (int j = 0; j < 1000; j++) {
 			if (worldHandler.getBlock(i, j) != BlockTexture::Air) {
-				Block b(i, j, worldHandler.getBlock(i, j), texture);
-				renderer.addBlock(b);
+				Block b(worldHandler.getBlock(i, j), texture);
+				renderer.addBlock(b, i, j);
 			}
 		}
 	}

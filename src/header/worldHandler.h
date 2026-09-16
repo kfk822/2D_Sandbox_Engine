@@ -30,7 +30,7 @@ public:
 		float location = 0.0f;
 		for (int i = 0; i < m_width; i++) {
 			int horizon = m_Horizon + 20 * noise.getNoiseValue(location);
-			location += 0.1f;
+			location += 0.025f;
 			for (int j = 0; j < m_height; j++) {
 				if (j == horizon)
 					m_world[i * m_width + j] = BlockTexture::Grass;

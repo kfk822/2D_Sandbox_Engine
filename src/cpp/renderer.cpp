@@ -7,9 +7,9 @@ Renderer::Renderer() {
 	m_Size = 0;
 }
 
-void Renderer::addBlock(Block& block) {
-	float x = block.m_X;
-	float y = block.m_Y;
+void Renderer::addBlock(Block& block, float xPos, float yPos) {
+	float x = xPos;
+	float y = yPos;
 	float textureX = block.m_Texturex;
 	float textureY = block.m_Texturey;
 	float textureWidth = block.m_TextureWidth;

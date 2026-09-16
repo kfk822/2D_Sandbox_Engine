@@ -14,7 +14,7 @@ private:
 public: 
 	Renderer();
 
-	void addBlock(Block& block);
+	void addBlock(Block& block, float x, float y);
 
 	void push();
 
