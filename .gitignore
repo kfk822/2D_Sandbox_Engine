@@ -18,9 +18,7 @@ Makefile
 
 # Visual Studio
 .vs/
-*.sln
-*.vcxproj
-*.vcxproj.user
+
 
 # VS Code
 .vscode/

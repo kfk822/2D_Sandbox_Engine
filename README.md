@@ -16,15 +16,14 @@ The goal is not to build a production-ready engine from the beginning, but to gr
 * 2D rendering
 * Basic game loop
 * Modular project structure
+* World generation
 
 ## Planned Features
 
 The engine is being developed incrementally. Planned systems include:
 
-* [ ] Chunk-based world management
 * [ ] Player movement and physics
 * [ ] Collision system
-* [ ] World generation
 * [ ] Block interaction
 * [ ] Entity system
 * [ ] Lighting
